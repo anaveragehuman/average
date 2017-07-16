@@ -18,3 +18,8 @@ Includes [patch for compiling with GCC 6](https://bugzilla.freedesktop.org/show_
 
 **processing-bin**: Forked from [betagarden](https://cgit.gentoo.org/proj/betagarden.git/).
 Version bumped more often.
+
+### www-misc
+
+**profile-sync-daemon**: Forked from [jorgicio's overlay](https://github.com/jorgicio/jorgicio-gentoo).
+Includes a fix for the ["bad substitution" error](https://github.com/graysky2/profile-sync-daemon/issues/182).
