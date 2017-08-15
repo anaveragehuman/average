@@ -3,6 +3,11 @@ Personal overlay for Gentoo packages.
 
 ## Packages
 
+### app-i18n
+
+**fcitx-libpinyin**: Forked from main repository.
+Version bumped more often. Updated to conform to EAPI 6.
+
 ### dev-embedded
 
 **arduino-libs**: Forked from [alexxy's overlay](https://cgit.gentoo.org/dev/alexxy.git).
