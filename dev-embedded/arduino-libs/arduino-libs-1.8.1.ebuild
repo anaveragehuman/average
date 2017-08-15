@@ -41,9 +41,9 @@ src_install() {
 	doins -r "ADK_release_${DK_V}/hardware/"{eng,fab}
 	fowners -R root:uucp "/usr/share/arduino/hardware"
 
-	dosym /usr/bin/avrdude "/usr/share/arduino/hardware/tools/avrdude"
-	dosym /etc/avrdude.conf "/usr/share/arduino/hardware/tools/avrdude.conf"
+	dosym "${D}/usr/bin/avrdude" "/usr/share/arduino/hardware/tools/avrdude"
+	dosym "${D}/etc/avrdude.conf" "/usr/share/arduino/hardware/tools/avrdude.conf"
 
 	mkdir -p "${D}/usr/share/arduino/hardware/tools/avr/etc/"
-	dosym /etc/avrdude.conf "/usr/share/arduino/hardware/tools/avr/etc/avrdude.conf"
+	dosym "${D}/etc/avrdude.conf" "/usr/share/arduino/hardware/tools/avr/etc/avrdude.conf"
 }
