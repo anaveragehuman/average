@@ -4,6 +4,11 @@ Personal overlay for Gentoo packages.
 
 ## Packages
 
+### app-admin
+
+**sysklogd**: Forked from main repository.
+Added `app-admin/logrotate` as a runtime dependency if *logrotate* is enabled.
+
 ### app-i18n
 
 **fcitx-libpinyin**: Forked from main repository.
