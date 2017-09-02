@@ -9,11 +9,6 @@ Personal overlay for Gentoo packages.
 **sysklogd**: Forked from main repository.
 Added `app-admin/logrotate` as a runtime dependency if *logrotate* is enabled.
 
-### app-i18n
-
-**fcitx-libpinyin**: Forked from main repository.
-Version bumped more often. Updated to conform to EAPI 6.
-
 ### dev-embedded
 
 **arduino-libs**: Forked from [alexxy's overlay](https://cgit.gentoo.org/dev/alexxy.git).
