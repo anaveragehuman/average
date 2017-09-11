@@ -24,6 +24,11 @@ Includes [patch for compiling with GCC 6](https://bugzilla.freedesktop.org/show_
 **processing-bin**: Forked from [betagarden](https://cgit.gentoo.org/proj/betagarden.git/).
 Version bumped more often.
 
+### media-plugins
+
+**mopidy-gmusic**: Forked from the [spike overlay](https://github.com/Spike-Pentesting/spike-overlay).
+Version bumped more often.
+
 ### media-sound
 
 **google-play-music-desktop-player-bin**: Forked from [zyrenth's overlay](https://github.com/kabili207/zyrenth-overlay).
