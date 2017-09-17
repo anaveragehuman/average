@@ -19,6 +19,11 @@ Adds libraries and hardware as specified in the [ADK documentation](https://deve
 **beignet**: Same as ebuild in main repository.
 Includes [patch for compiling with GCC 6](https://bugzilla.freedesktop.org/show_bug.cgi?id=101662#c3).
 
+### dev-python
+
+**gmusicapi**: Forked from [seadep](https://github.com/Cogitri/gentoo-overlay-seadep).
+Updated to reflect changes in upstream's requirements.txt.
+
 ### media-gfx
 
 **processing-bin**: Forked from [betagarden](https://cgit.gentoo.org/proj/betagarden.git/).
