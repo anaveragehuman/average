@@ -31,6 +31,8 @@ Version bumped more often.
 
 ### media-plugins
 
+**ashuffle**: An ebuild for [joshkunz's ashuffle](https://github.com/joshkunz/ashuffle).
+
 **mopidy-gmusic**: Forked from the [spike overlay](https://github.com/Spike-Pentesting/spike-overlay).
 Version bumped more often.
 
