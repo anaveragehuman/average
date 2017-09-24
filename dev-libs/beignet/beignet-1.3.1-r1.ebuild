@@ -40,7 +40,6 @@ DEPEND="${COMMON}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.0_no-debian-multiarch.patch
-	"${FILESDIR}"/${PN}-1.3.1-oclicd_no_upstream_icdfile.patch
 	"${FILESDIR}"/${PN}-1.2.0_no-hardcoded-cflags.patch
 	"${FILESDIR}"/llvm-terminfo.patch
 	"${FILESDIR}"/gcc6-fix.patch
