@@ -41,6 +41,12 @@ Version bumped more often.
 **google-play-music-desktop-player-bin**: Forked from [zyrenth's overlay](https://github.com/kabili207/zyrenth-overlay).
 Version bumped more often.
 
+### net-p2p
+
+**armory**: Forked from the [bitcoin
+overlay](https://gitlab.com/bitcoin/gentoo).
+Version bumped more often.
+
 ### www-misc
 
 **profile-sync-daemon**: Forked from [jorgicio's overlay](https://github.com/jorgicio/jorgicio-gentoo).
