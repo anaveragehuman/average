@@ -1,0 +1,24 @@
+diff --git 1/ 2/
+index 38fcfbd..efd2efd 100644
+--- 1/build/build.xml.orig
++++ 2/build/build.xml
+@@ -343,7 +343,9 @@
+   <!-- - - - - - - - - - - - - - - - - - -->
+ 
+   <target name="subprojects-clean">
++<!--
+     <subant buildpath="../core" target="clean"/>
+     <subant buildpath="../app" target="clean"/>
++-->
+     <subant buildpath="../java/libraries/dxf" target="clean"/>
+     <subant buildpath="../java/libraries/io" target="clean"/>
+@@ -359,7 +361,9 @@
+   </target>
+ 
+   <target name="subprojects-build">
++<!--
+     <subant buildpath="../core" target="build"/>
+     <subant buildpath="../app" target="build"/>
++-->
+     <subant buildpath="../java/libraries/dxf" target="build"/>
+     <subant buildpath="../java/libraries/net" target="build"/>
