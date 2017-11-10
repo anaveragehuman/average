@@ -1,0 +1,13 @@
+diff --git 1/build.xml.orig 2/build.xml
+index b1140e0..fc948a5 100644
+--- 1/build/build.xml
++++ 2/build/build.xml
+@@ -198,7 +198,7 @@
+   <property name="jre.tgz.path" value="${platform}/jre-${jdk.short}.tgz" />
+ 
+   <target name="jre-check">
+-    <available file="${jre.tgz.path}" property="jre.tgz.downloaded" />
++    <property name="jre.tgz.downloaded" value="true" />
+   </target>
+ 
+   <target name="downloader-setup">

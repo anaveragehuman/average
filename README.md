@@ -26,6 +26,9 @@ Updated to reflect changes in upstream's requirements.txt.
 
 ### media-gfx
 
+**processing**: [Processing](https://github.com/processing/processing), built
+from source.
+
 **processing-bin**: Forked from [betagarden](https://cgit.gentoo.org/proj/betagarden.git/).
 Version bumped more often.
 

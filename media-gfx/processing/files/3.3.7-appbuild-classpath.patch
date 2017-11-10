@@ -1,0 +1,16 @@
+diff --git 1/app/build.xml.bak 2/app/build.xml
+index b6d9721..85b849b 100644
+--- 1/app/build.xml
++++ 2/app/build.xml
+@@ -36,10 +36,7 @@
+ 	   includeAntRuntime="false" 
+ 	   classpath="../core/library/core.jar; 
+                       ../core/apple.jar; 
+-                      lib/ant.jar; 
+-                      lib/ant-launcher.jar; 
+-                      lib/jna.jar;
+-                      lib/jna-platform.jar"
++		      ${gentoo.classpath}"
+ 	   debug="on"
+ 	   nowarn="true"
+ 	   compiler="org.eclipse.jdt.core.JDTCompilerAdapter">
