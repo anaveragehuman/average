@@ -42,6 +42,11 @@ Added `app-admin/logrotate` as a runtime dependency if *logrotate* is enabled.
 **arduino-libs**: Forked from [alexxy's overlay](https://cgit.gentoo.org/dev/alexxy.git).
 Adds libraries and hardware as specified in the [ADK documentation](https://developer.android.com/adk/adk.html).
 
+### dev-java
+
+**osp-core**: [Core library](https://github.com/OpenSourcePhysics/osp) for Open
+Source Physics programs.
+
 ### dev-libs
 
 **beignet**: Same as ebuild in main repository.
