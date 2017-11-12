@@ -47,6 +47,9 @@ Adds libraries and hardware as specified in the [ADK documentation](https://deve
 **osp-core**: [Core library](https://github.com/OpenSourcePhysics/osp) for Open
 Source Physics programs.
 
+**xuggler**: An ebuild for [Xuggler](http://www.xuggle.com/xuggler/).
+Required by `dev-java/osp-video-engines`.
+
 ### dev-libs
 
 **beignet**: Same as ebuild in main repository.

@@ -1,0 +1,23 @@
+diff --git a/mk/buildtools/buildhelper.xml.orig b/mk/buildtools/buildhelper.xml
+index e1324c0..1e823e7 100644
+--- a/mk/buildtools/buildhelper.xml.orig
++++ b/mk/buildtools/buildhelper.xml
+@@ -52,9 +52,6 @@
+     of not having if/else/then -->
+   <taskdef resource="net/sf/antcontrib/antlib.xml"
+     classpath="${xuggle-buildhelper.basedir}/lib/ant-contrib.jar"/>
+-  <!-- And load up proguard for obsfucation support -->
+-  <taskdef resource="proguard/ant/task.properties"
+-    classpath="${xuggle-buildhelper.basedir}/lib/proguard-4.4.jar" />
+ 
+   <!-- Allow a custom buildhelper file if people want one -->
+   <if>
+@@ -75,7 +72,7 @@
+   <property name="organization.name" value="xuggle"/>
+   <property name="documentation.includes" value="**"/>
+   <property name="documentation.excludes" value="com/xuggle/not/a/valid/package/**"/>
+-  <property name="proguard.obsfucate" value="true"/>
++  <property name="proguard.obsfucate" value="false"/>
+ 
+   <property environment="env"/>
+   <property name="top.dir" location="."/>

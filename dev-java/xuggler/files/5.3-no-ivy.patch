@@ -1,0 +1,200 @@
+index e1324c0..ebe8913 100644
+--- 1/mk/buildtools/buildhelper.xml.orig
++++ 2/mk/buildtools/buildhelper.xml
+@@ -33,7 +33,6 @@
+     name="xuggle-buildhelper"
+     default="stage"
+     basedir="."
+-    xmlns:ivy="antlib:org.apache.ivy.ant"
+     >
+   <description>
+     This build file is a generic build file meant to be imported by
+@@ -191,84 +190,8 @@
+     <echo message='Ant: ant.home is ${ant.home} and the target version is ${ant.version}'/>
+   </target>
+ 
+-  <target name="ivy-init" unless="xuggle.ivy.initted">
+-    <!--
+-      Ivy tasks and lib directory
+-      http://ant.apache.org/ivy
+-      http://testearly.com/2007/06/24/ivy-in-42-steps
+ 
+-      In order for this to work, you need to set the right ivy JAR file into
+-      the lib directory of your project; all other dependencies are then managed
+-      by that jar file.
+-    -->
+-    <echo message="Initing ivy from ${xuggle-buildhelper.basedir}/lib/${ivy.version}.jar"/>
+-    <taskdef uri="antlib:org.apache.ivy.ant" resource="org/apache/ivy/ant/antlib.xml" classpath="${xuggle-buildhelper.basedir}/lib/${ivy.version}.jar"/>
+-    <property name="xuggle.ivy.initted" value="true"/>
+-    <echo message="Ivy task loaded: ${xuggle-buildhelper.basedir}/lib/${ivy.version}.jar"/>
+-    <ivy:settings file="${xuggle-buildhelper.basedir}/ivysettings.xml"/>
+-    <echo message="Ivy settings file set: ${xuggle-buildhelper.basedir}/ivysettings.xml"/>
+-  </target>
+ 
+-  <target name="ivy-deliver"
+-      depends="ivy-init"
+-      description="Deliver any libraries">
+-    <!-- Ivy configuration -->
+-    <condition property="ivy.settings.name" value="default">
+-      <not>
+-        <isset property="ivy.settings.name"/>
+-      </not>
+-    </condition>
+-    <echo message="ivy.settings.name: ${ivy.settings.name}"/>
+-    <ivy:resolve keep="true" file="ivy.xml" conf="${ivy.settings.name}"/>
+-    <ivy:retrieve file="ivy.xml" conf="${ivy.settings.name}"/>
+-    <ivy:deliver conf="default" />
+-  </target>
+-
+-  <target name="ivy-publish"
+-      depends="ivy-init"
+-      description="Publish any libraries">
+-    <!-- Ivy configuration -->
+-    <condition property="ivy.settings.name" value="default">
+-      <not>
+-        <isset property="ivy.settings.name"/>
+-      </not>
+-    </condition>
+-    <echo message="ivy.settings.name: ${ivy.settings.name}"/>
+-    <ivy:resolve keep="true" file="ivy.xml" conf="${ivy.settings.name}"/>
+-    <ivy:retrieve file="ivy.xml" conf="${ivy.settings.name}"/>
+-    <ivy:makepom
+-      ivyfile="ivy.xml"
+-      pomfile="${dist.dir}/lib/${app.name}.pom"
+-      description="${app.name}"
+-    >
+-      <mapping conf="compile" scope="compile"/>
+-      <mapping conf="default" scope="runtime"/>
+-      <mapping conf="test" scope="test"/>
+-    </ivy:makepom>
+-    <ivy:publish
+-        conf="default"
+-        update="true"
+-        replacedynamicrev="true"
+-        forcedeliver="false"
+-        publishivy="true"
+-        overwrite="true"
+-        pubrevision="${ivy.deliver.revision}"
+-        resolver="local-m2-publish">
+-      <artifacts pattern="${dist.dir}/war/[artifact].war" />
+-      <artifacts pattern="${dist.dir}/lib/[artifact].[ext]" />
+-    </ivy:publish>
+-    <ivy:publish
+-        conf="default"
+-        update="true"
+-        replacedynamicrev="true"
+-        forcedeliver="false"
+-        publishivy="true"
+-        overwrite="true"
+-        resolver="share-m2">
+-      <artifacts pattern="${dist.dir}/war/[artifact].war" />
+-      <artifacts pattern="${dist.dir}/lib/[artifact].[ext]" />
+-    </ivy:publish>
+-  </target>
+ 
+   <target name="windows-init"
+       if="os.windows">
+@@ -412,19 +335,8 @@
+     </if>
+ 
+     <echo message="Building Library Version: ${library.version}"/>
+-    <condition property="ivy.revision" value="${library.version.major}.${library.version.minor}-SNAPSHOT">
+-      <not>
+-        <isset property="ivy.revision"/>
+-      </not>
+-    </condition>
+-    <condition property="ivy.deliver.revision" value="${ivy.revision}">
+-      <not>
+-        <isset property="ivy.deliver.revision"/>
+-      </not>
+-    </condition>
+-    <echo message="Ivy Library Version: ${ivy.deliver.revision}"/>
+   </target>
+-  <target name="init" depends="os-init, java6.check, revision, ivy-init" >
++  <target name="init" depends="os-init, java6.check, revision" >
+     <!-- determine if we have a native components -->
+     <available property="native.configure.exists"
+         file="${top.dir}/configure"/>
+@@ -443,39 +355,11 @@
+ 
+   </target>
+ 
+-  <target name="ivy-retrieve" 
+-      depends="ivy-init"
+-      description="Retrieves the libraries if needed">
+-    <!-- Ivy configuration -->
+-    <condition property="ivy.settings.name" value="default">
+-      <not>
+-        <isset property="ivy.settings.name"/>
+-      </not>
+-    </condition>
+-    <mkdir dir="${build.dir}/lib"/>
+-    <mkdir dir="${build.dir}/lib/compile"/>
+-    <mkdir dir="${build.dir}/lib/test"/>
+-    <mkdir dir="${build.dir}/lib/default"/>
+-    <echo message="ivy.settings.name: ${ivy.settings.name}"/>
+-    <echo message="ivy.deliver.revision: ${ivy.deliver.revision}"/>
+-    <ivy:resolve keep="true" file="ivy.xml" conf="${ivy.settings.name}"/>
+-    <ivy:retrieve file="ivy.xml" conf="${ivy.settings.name}"/>
+-  </target>
+ 
+-  <target name="ivy-clear" description="Clears out the Ivy cache">
+-    <delete verbose="true" failonerror="false" dir="${user.home}/.ivy/cache"/>
+-    <delete verbose="true" failonerror="false" dir="${user.home}/.ivy2/cache"/>
+-    <delete verbose="true" failonerror="false" includeemptydirs="true">
+-      <fileset dir="${build.dir}/lib" excludes="**/ivy*.jar"/>
+-    </delete>
+-  </target>
+ 
+   <target name="compile-java"
+       depends="init"
+       description="compile the source " >
+-    <antcall target="ivy-retrieve" inheritAll="true" inheritRefs="true">
+-      <param name="ivy.settings.name" value="compile"/>
+-    </antcall>
+     <mkdir dir="${generated.src.dir}"/>
+     <if>
+       <isset property="native.configure.exists"/>
+@@ -546,9 +430,6 @@
+   <target name="stage-java"
+       depends="compile-java, fixtures-java"
+       description="Stages the final install directory structure to prepare for dist">
+-    <antcall target="ivy-retrieve" inheritAll="true" inheritRefs="true">
+-      <param name="ivy.settings.name" value="default"/>
+-    </antcall>
+     <copy todir="${dist.dir}/lib">
+       <fileset dir="${build.dir}/lib/default">
+         <include name="**/*.jar"/>
+@@ -556,12 +437,6 @@
+     </copy>
+     <antcall target="jar" inheritAll="true" inheritRefs="true">
+     </antcall>
+-    <antcall target="ivy-deliver" inheritAll="true" inheritRefs="true">
+-      <param name="ivy.settings.name" value="default"/>
+-    </antcall>
+-    <antcall target="ivy-publish" inheritAll="true" inheritRefs="true">
+-      <param name="ivy.settings.name" value="default"/>
+-    </antcall>
+   </target>
+ 
+   <target name="jar"
+@@ -689,9 +564,6 @@
+           </if>
+        </then>
+     </if>
+-    <antcall target="webapp" inheritAll="true" inheritRefs="true">
+-      <param name="ivy.settings.name" value="default"/>
+-    </antcall>
+   </target>
+   <target
+       name="webapp"
+@@ -805,9 +677,6 @@
+   </target>
+ 
+   <target name="compile-tests-java" depends="compile-java" description="Compiles junit test classes">
+-    <antcall target="ivy-retrieve" inheritAll="true" inheritRefs="true">
+-      <param name="ivy.settings.name" value="test"/>
+-    </antcall>
+     <javac
+         includeantruntime="false"
+         source="${java.source}"

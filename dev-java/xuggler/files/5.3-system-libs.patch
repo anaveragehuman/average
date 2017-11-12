@@ -1,0 +1,11 @@
+index e1324c0..9d7538b 100644
+--- 1/mk/buildtools/buildhelper.xml.orig
++++ 2/mk/buildtools/buildhelper.xml
+@@ -575,6 +575,7 @@
+         <manifestclasspath
+             property="manifest.classpath"
+             jarfile="${dist.dir}/lib/${app.name}.jar"
++            maxParentLevels="100"
+             >
+           <classpath>
+             <fileset dir="${dist.dir}/lib">
