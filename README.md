@@ -47,6 +47,8 @@ Adds libraries and hardware as specified in the [ADK documentation](https://deve
 **osp-core**: [Core library](https://github.com/OpenSourcePhysics/osp) for Open
 Source Physics programs.
 
+**osp-video-engines**: [Video engine support](https://github.com/OpenSourcePhysics/video-engines) for Open Source Physics Java programs including Tracker and EJS.
+
 **xuggler**: An ebuild for [Xuggler](http://www.xuggle.com/xuggler/).
 Required by `dev-java/osp-video-engines`.
 
