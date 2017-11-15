@@ -67,6 +67,8 @@ Updated to reflect changes in upstream's requirements.txt.
 **processing-bin**: Forked from [betagarden](https://cgit.gentoo.org/proj/betagarden.git/).
 Version bumped more often.
 
+**tracker**: An ebuild for [Tracker](https://github.com/OpenSourcePhysics/tracker).
+
 ### media-plugins
 
 **ashuffle**: An ebuild for [joshkunz's ashuffle](https://github.com/joshkunz/ashuffle).

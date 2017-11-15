@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>anaveragehuman@icurse.nl</email>
+    </maintainer>
+    <use>
+        <flag name="video-engines">Use<pkg>dev-java/osp-video-engines</pkg> for video support.</flag>
+    </use>
+</pkgmetadata>
