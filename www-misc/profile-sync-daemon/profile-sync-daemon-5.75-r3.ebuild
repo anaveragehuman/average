@@ -16,7 +16,7 @@ IUSE="systemd"
 
 RDEPEND="
 	app-shells/bash
-	net-misc/rsync
+	net-misc/rsync[xattr]
 	systemd? ( sys-apps/systemd )"
 
 src_prepare() {
