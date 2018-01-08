@@ -1,0 +1,14 @@
+<repositories encoding="unicode" version="1.1">
+  <repo priority="50" quality="experimental">
+    <name>gen2</name>
+    <description>AnAverageHuman's personal overlay for various packages</description>
+    <homepage>https://github.com/AnAverageHuman/gen2</homepage>
+    <owner>
+      <email>jeffrey@icurse.nl</email>
+      <name>Jeffrey Lin</name>
+    </owner>
+    <source type="git">https://github.com/AnAverageHuman/gen2.git</source>
+    <feed>https://github.com/anaveragehuman/gen2/commits/master.atom</feed>
+  </repo>
+</repositories>
+

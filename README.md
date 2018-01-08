@@ -1,6 +1,34 @@
 # average
 Personal overlay for Gentoo packages.
 
+## Installation/Usage
+
+As this is more or less a personal repository, I force push often. In the event
+that `emerge` or `layman` refuses to sync, either remove and re-add the
+repository, or manually enter the directory and run as the appropriate user:
+
+```sh
+git fetch --all && git reset --hard origin/master
+```
+
+### eselect-repository
+
+See [the wiki](https://wiki.gentoo.org/wiki/Eselect/Repository) for more information.
+
+```sh
+emerge --ask app-eselect/eselect-repository
+eselect repository add average git https://github.com/AnAverageHuman/average.git
+emerge --sync
+```
+
+### layman
+
+```sh
+emerge --ask app-portage/layman
+layman -of https://raw.githubusercontent.com/AnAverageHuman/average/master/repositories.xml -a average
+layman -s average
+```
+
 ## Packages
 
 ### dev-embedded
