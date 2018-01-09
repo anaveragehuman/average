@@ -60,11 +60,6 @@ Version bumped more often.
 **mopidy-gmusic**: Forked from the [spike overlay](https://github.com/Spike-Pentesting/spike-overlay).
 Version bumped more often.
 
-### media-sound
-
-**google-play-music-desktop-player-bin**: Forked from [zyrenth's overlay](https://github.com/kabili207/zyrenth-overlay).
-Version bumped more often.
-
 ### www-misc
 
 **profile-sync-daemon**: Forked from [jorgicio's overlay](https://github.com/jorgicio/jorgicio-gentoo).
