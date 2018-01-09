@@ -43,11 +43,6 @@ Added `app-admin/logrotate` as a runtime dependency if *logrotate* is enabled.
 **arduino-libs**: Forked from [alexxy's overlay](https://cgit.gentoo.org/dev/alexxy.git).
 Adds libraries and hardware as specified in the [ADK documentation](https://developer.android.com/adk/adk.html).
 
-### dev-libs
-
-**beignet**: Same as ebuild in main repository.
-Includes [patch for compiling with GCC 6](https://bugzilla.freedesktop.org/show_bug.cgi?id=101662#c3).
-
 ### dev-python
 
 **gmusicapi**: Forked from [seadep](https://github.com/Cogitri/gentoo-overlay-seadep).
