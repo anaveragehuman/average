@@ -60,6 +60,10 @@ Version bumped more often.
 **mopidy-gmusic**: Forked from the [spike overlay](https://github.com/Spike-Pentesting/spike-overlay).
 Version bumped more often.
 
+### net-nds
+
+**ypbind**: Taken directly from attachments in [bug 626052](https://bugs.gentoo.org/show_bug.cgi?id=626052)
+
 ### www-misc
 
 **profile-sync-daemon**: Forked from [jorgicio's overlay](https://github.com/jorgicio/jorgicio-gentoo).
