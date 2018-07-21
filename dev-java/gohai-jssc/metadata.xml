@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>anaveagehuman@icurse.nl</email>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">gohai/java-simple-serial-connector</remote-id>
+  </upstream>
+</pkgmetadata>
