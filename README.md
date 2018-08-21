@@ -1,7 +1,8 @@
 # average
 [![Build Status](https://travis-ci.org/AnAverageHuman/average.svg?branch=master)](https://travis-ci.org/AnAverageHuman/average)
 
-Personal overlay for Gentoo packages.
+Personal overlay for Gentoo packages. Changes often due to patches making it
+into the main tree. See branches for unfinished projects.
 
 ## Installation/Usage
 
@@ -33,29 +34,19 @@ layman -s average
 
 ## Packages
 
+See the automatically generated package table in
+[Packages.adoc](../travis-artifacts/Packages.adoc) or
+[Packages.pdf](../travis-artifacts/Packages.pdf)
+for a complete listing.
+
+The following packages require extra explanation:
+
 ### dev-embedded
 
-**arduino-libs**: Forked from [alexxy's overlay](https://cgit.gentoo.org/dev/alexxy.git).
-Adds libraries and hardware as specified in the [ADK documentation](https://developer.android.com/adk/adk.html).
-
-### dev-python
-
-**gmusicapi**: Forked from [seadep](https://github.com/Cogitri/gentoo-overlay-seadep).
-Updated to reflect changes in upstream's requirements.txt.
-
-### media-gfx
-
-**processing-bin**: Forked from [betagarden](https://cgit.gentoo.org/proj/betagarden.git/).
-Version bumped more often.
-
-### media-plugins
-
-**ashuffle**: An ebuild for [joshkunz's ashuffle](https://github.com/joshkunz/ashuffle).
-
-**mopidy-gmusic**: Forked from the [spike overlay](https://github.com/Spike-Pentesting/spike-overlay).
-Version bumped more often.
+**arduino-libs**: Adds libraries and hardware as specified in the
+[ADK documentation](https://developer.android.com/adk/adk.html). Never tested.
 
 ### www-misc
 
-**profile-sync-daemon**: Forked from [jorgicio's overlay](https://github.com/jorgicio/jorgicio-gentoo).
-Includes a fix for the ["bad substitution" error](https://github.com/graysky2/profile-sync-daemon/issues/182).
+**profile-sync-daemon**: Includes a fix for the ["bad substitution" error](https://github.com/graysky2/profile-sync-daemon/issues/182).
+

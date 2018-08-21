@@ -1,0 +1,47 @@
+Package List
+============
+Jeffrey Lin <jeffrey@icurse.nl>
+v{{ env["TRAVIS_BUILD_NUMBER"] }},
+:icons: font
+ifdef::backend-pdf[:notitle:]
+ifndef::backend-pdf[:toc:]
+
+== Categories
+
+Click a package to be taken to its corresponding row in the packages table.
+
+[options="header", cols="d,v"]
+|===
+| Category | Packages
+{% for cat, pkgs in pkg_struct.items() %}
+    | [[{{cat}}]]{{cat}} |
+    {% for pkg in pkgs.keys() %}<<{{cat}}-{{pkg}}, {{pkg}}>>
+    {% endfor %}
+{% endfor %}
+|===
+
+== Packages
+
+Click a category to be taken to its corresponding row in the categories table. +
+Click the icon:home[] icon for a package to be taken to its homepage. +
+Click a version for a package to be taken to the ebuild for that version.
+
+[options="header", cols="d,v,d"]
+|===
+|Package | Versions | Description
+{% for cat, pkgs in pkg_struct.items() %}
+    {% for pn, vals in pkgs.items() %}
+        {% set data = vals.data %}
+        | [[{{cat}}-{{pn}}]]<<{{cat}}>>/{{pn}}
+        {% for i in data[1].split() %}
+            icon:home[link="{{i}}"]
+        {% endfor %} |
+        {% for pv in vals.versions %}link:{{cat}}/{{pn}}/{{pn}}-{{pv}}.ebuild[{{pv}}]
+        {% endfor %} | {{data[0]}}
+    {% endfor %}
+{% endfor %}
+|===
+
+
+---
+Generated at {{now}} UTC.
