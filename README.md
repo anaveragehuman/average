@@ -46,7 +46,3 @@ The following packages require extra explanation:
 **arduino-libs**: Adds libraries and hardware as specified in the
 [ADK documentation](https://developer.android.com/adk/adk.html). Never tested.
 
-### www-misc
-
-**profile-sync-daemon**: Includes a fix for the ["bad substitution" error](https://github.com/graysky2/profile-sync-daemon/issues/182).
-
