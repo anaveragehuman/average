@@ -20,38 +20,44 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-RDEPEND=""
+RDEPEND="
+	media-video/ffmpeg[chromium]
+"
 DEPEND="${RDEPEND}"
 
 RESTRICT="mirror"
+QA_PREBUILT="
+	opt/postman/libnode.so
+	opt/postman/Postman
+"
 
 S="${WORKDIR}/Postman"
 
 src_install() {
 	local find_exp="-or -name"
 	local find_name=()
-	for match in "AUTHORS*" "CHANGELOG*" "CONTRIBUT*" "README*" \
-		".travis.yml" ".eslint*" ".wercker.yml" ".npmignore" \
-		"*.md" "*.markdown" "*.bat" "*.cmd"; do
+	for match in "AUTHORS*" "CHANGELOG*" "CONTRIBUT*" "README*" ".travis.yml" \
+		".eslint*" ".wercker.yml" ".npmignore" "*.md" "*.markdown" "*.bat" \
+		"*.cmd"; do
 		find_name+=( ${find_exp} "${match}" )
 	done
 
-	find "${S}/app/resources/app/node_modules" \
-		\( -type d -name examples \) -or \( -type f \( \
-		-iname "LICEN?E*" "${find_name[@]}" \) \) -exec rm -rf "{}" \;
+	find app/resources/app/node_modules \
+		\( -type d -name examples \) -or \( -type f \
+		\( -iname "LICEN?E*" "${find_name[@]}" \) \) -exec rm -rf "{}" \;
 
-	rm libffmpeg.so
+	rm app/libffmpeg.so
 
-	insinto /opt/${MY_PN}
+	insinto "/opt/${MY_PN}"
 	doins -r app/*
 
-	exeinto /opt/${MY_PN}
+	exeinto "/opt/${MY_PN}"
 	doexe Postman
 
-	dosym /opt/${MY_PN}/Postman /usr/bin/${MY_PN}
+	dosym ../../opt/postman/Postman "${EPREFIX}/usr/bin/${MY_PN}"
 
 	cat > 99postman-bin <<-EOF
-		LDPATH=${EROOT%/}/opt/postman/app
+		LDPATH=${EROOT%/}/opt/postman:${EROOT%/}/usr/$(get_libdir)/chromium
 	EOF
 	doenvd 99postman-bin
 
