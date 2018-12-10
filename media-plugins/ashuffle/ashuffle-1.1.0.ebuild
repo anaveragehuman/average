@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,14 +10,9 @@ SRC_URI="https://github.com/joshkunz/ashuffle/archive/v${PV}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT="mirror"
 
-DEPEND=""
-RDEPEND="media-libs/libmpdclient"
-
-DOCS=()
-
-PATCHES=()
+DEPEND="media-libs/libmpdclient"
+RDEPEND="${DEPEND}"
 
 src_install() {
 	dobin ashuffle
