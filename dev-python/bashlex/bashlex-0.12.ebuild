@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{5,6} pypy pypy3 )
 inherit distutils-r1
 DESCRIPTION="Python parser for bash"
 HOMEPAGE="https://github.com/idank/bashlex"
-SRC_URI="https://codeload.github.com/idank/${PN}/tar.gz/${PV} -> ${PN}-${PV}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
