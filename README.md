@@ -1,14 +1,19 @@
 # average
-[![Build Status](https://travis-ci.org/AnAverageHuman/average.svg?branch=master)](https://travis-ci.org/AnAverageHuman/average)
+[![Build Status](https://travis-ci.com/AnAverageHuman/average.svg?branch=master)](https://travis-ci.com/AnAverageHuman/average)
 
 Personal overlay for Gentoo packages. Changes often due to patches making it
 into the main tree. See branches for unfinished projects.
 
 ## Installation/Usage
 
-As this is more or less a personal repository, I force push often. In the event
-that `emerge` or `layman` refuses to sync, either remove and re-add the
-repository, or manually enter the directory and run as the appropriate user:
+Repositories considered "masters" of this one are not necessary for most of the
+packages here.  If the build is passing on Travis but `emerge` fails to resolve
+dependencies, you're probably missing one or more of the "master" repositories
+and should add it to your system.
+
+I force push often. In the event that `emerge` or `layman` refuses to sync,
+either remove and re-add the repository, or manually enter the directory and run
+as the appropriate user:
 
 ```sh
 git fetch --all && git reset --hard origin/master
@@ -45,4 +50,3 @@ The following packages require extra explanation:
 
 **arduino-libs**: Adds libraries and hardware as specified in the
 [ADK documentation](https://developer.android.com/adk/adk.html). Never tested.
-
