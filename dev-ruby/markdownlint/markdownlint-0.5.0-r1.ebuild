@@ -1,8 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY=( ruby2{4,5} )
+
+RUBY_FAKEGEM_EXTRA_DOC="README.md CHANGELOG.md"
 
 inherit ruby-fakegem
 
@@ -11,7 +13,7 @@ HOMEPAGE="https://github.com/markdownlint/markdownlint"
 SRC_URI="https://github.com/markdownlint/markdownlint/archive/v${PV}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 
 RESTRICT="mirror"
