@@ -1,0 +1,67 @@
+diff --git a/packages/flutter_tools/lib/src/asset.dart b/packages/flutter_tools/lib/src/asset.dart
+index 7c8f054517..911bc131d5 100644
+--- a/packages/flutter_tools/lib/src/asset.dart
++++ b/packages/flutter_tools/lib/src/asset.dart
+@@ -4,6 +4,7 @@
+ 
+ import 'dart:typed_data';
+ 
++import 'base/common.dart'
+ import 'package:meta/meta.dart';
+ import 'package:package_config/package_config.dart';
+ import 'package:standard_message_codec/standard_message_codec.dart';
+@@ -17,6 +18,7 @@ import 'build_info.dart';
+ import 'cache.dart';
+ import 'convert.dart';
+ import 'dart/package_map.dart';
++import 'globals.dart' as globals;
+ import 'devfs.dart';
+ import 'flutter_manifest.dart';
+ import 'license_collector.dart';
+@@ -544,7 +546,7 @@ class ManifestAssetBundle implements AssetBundle {
+         result.add(_Asset(
+           baseDir: _fileSystem.path.join(
+             Cache.flutterRoot!,
+-            'bin', 'cache', 'artifacts', 'material_fonts',
++            'bin', '.cache', 'flutter', 'artifacts', 'material_fonts',
+           ),
+           relativeUri: Uri(path: entryUri.pathSegments.last),
+           entryUri: entryUri,
+diff --git a/packages/flutter_tools/lib/src/cache.dart b/packages/flutter_tools/lib/src/cache.dart
+index 13efbde879..6e79bdc3c2 100644
+--- a/packages/flutter_tools/lib/src/cache.dart
++++ b/packages/flutter_tools/lib/src/cache.dart
+@@ -9,6 +9,7 @@ import 'package:file/memory.dart';
+ import 'package:meta/meta.dart';
+ import 'package:process/process.dart';
+ 
++import 'globals.dart' as globals;
+ import 'base/common.dart';
+ import 'base/error_handling_io.dart';
+ import 'base/file_system.dart';
+@@ -320,8 +321,15 @@ class Cache {
+       return;
+     }
+     assert(_lock == null);
++
++    final Directory dir = _fileSystem.directory(_fileSystem.path.join(globals.fsUtils.homeDirPath!, '.cache', 'flutter'));
++    if (!dir.existsSync()) {
++      dir.createSync(recursive: true);
++      globals.os.chmod(dir, '755');
++    }
++
+     final File lockFile =
+-      _fileSystem.file(_fileSystem.path.join(flutterRoot!, 'bin', 'cache', 'lockfile'));
++      _fileSystem.file(_fileSystem.path.join(globals.fsUtils.homeDirPath!, '.cache', 'flutter', 'lockfile'));
+     try {
+       _lock = lockFile.openSync(mode: FileMode.write);
+     } on FileSystemException catch (e) {
+@@ -534,7 +542,7 @@ class Cache {
+     if (_rootOverride != null) {
+       return _fileSystem.directory(_fileSystem.path.join(_rootOverride!.path, 'bin', 'cache'));
+     } else {
+-      return _fileSystem.directory(_fileSystem.path.join(flutterRoot!, 'bin', 'cache'));
++      return _fileSystem.directory(_fileSystem.path.join(_fileSystem.path.join(globals.fsUtils.homeDirPath!, '.cache', 'flutter'));
+     }
+   }
+ 
